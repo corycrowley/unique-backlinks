@@ -36,6 +36,14 @@ if ( !defined( 'BLURLS_ABSPATH') ) {
 }
 
 /**
+ * Upload File object.
+ *
+ * @since 1.0
+ * @var string
+ */
+$upload_file_object = $_FILES["file"];
+
+/**
  * Define Upload file name.
  *
  * @since 1.0
@@ -71,6 +79,7 @@ $backlink_urls->set_uploaded_file( $upload_file_name );
 $backlink_urls->set_output_file( $output_file_name );
 $backlink_urls->set_download_file( $output_file_name );
 $backlink_urls->set_delimiter( ',' );
+$backlink_urls->upload( $upload_file_object );
 $download_file = $backlink_urls->get_backlink_urls_file();
 
 ?>

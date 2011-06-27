@@ -184,9 +184,29 @@ class Unique_Backlink_Urls {
 	 * @since 1.0
 	 * @access public
 	 * @param string $delimiter_value The delimiter value
-	 **/
+	 */
 	public function set_delimiter ( $delimiter_value = ',' ) {
 		$this->delimiter = $delimiter_value;
+	}
+	
+	/**
+	 * Function to upload the file and put in right directory.
+	 *
+	 * @since 1.0
+	 * @access public
+	 * @param object $file File upload object
+	 */
+	public function upload ( $file ) {
+		
+		// Assign file paramater.
+		$file_object = $file;
+		
+		if ( $file_object["error"] > 0 ) {
+			throw new Exceptions( "Return Code: " . $file_object["error"] );
+		} else {	
+      move_uploaded_file( $file_object["tmp_name"], $this->uploaded_file );
+		}
+		
 	}
 	
 	/**
